@@ -25,9 +25,10 @@ Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cro
 | Core tables: shared + projects division | Run: 8 tables present (list reported by the project owner) |
 | Core tables: products, rentals, billing | Run on PostgreSQL 18.6 |
 | Structure checks (`tests/01_core_structure_checks.sql`) | Run; reported as passed. Output not yet saved in the repo |
-| Assumptions register (`docs/assumptions_register.xlsx`) | Proposed values, awaiting owner review |
+| Assumptions register (`docs/assumptions_register.xlsx`) | Accepted as proposed by the owner (bulk accept, not reviewed row by row). VAT and seasonality rows still open |
 | Reference data (lookup lists) | Run; row counts verified (reported) |
-| Stage 5: code columns in core and 16 raw tables (`sql/03_raw/run_stage_5.sql`, includes its own check) | Written, **not yet run** |
+| Stage 5: code columns in core and 16 raw tables (`sql/03_raw/run_stage_5.sql`, includes its own check) | Run on PostgreSQL 18.6; all 3 checks passed (reported by the project owner) |
+| Stage 6: customers and suppliers in raw, with planted errors (`sql/04_generate/run_stage_6.sql`, includes its own check) | Written, **not yet run** |
 | Data generator | Not started |
 | Staging, mart, SQL analysis, tests, Power BI | Not started |
 
@@ -35,6 +36,7 @@ Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cro
 - Synthetic data reflects our assumptions. It cannot discover facts about a real business.
 - Gross margin only. Overheads, payroll, depreciation and tax are not modelled.
 - One currency (KES). No history of changes to customers or prices.
+- All customer and supplier names are made up from word lists. Any match with a real organisation is coincidence.
 - Generator ranges are anchored on public vendor and trade sources (mostly US and UK). See the assumptions register when it is added.
 
 ## Licence

@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 5 in one file. Run it once, in the mwangaza_av database.
--- STATUS: written, not yet run.
+-- STATUS: run on PostgreSQL 18.6; the project owner reports all 3 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if the customer or supplier table already has rows. Nothing is changed.
