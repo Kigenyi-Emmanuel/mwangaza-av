@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 6 in one file: create fake customers and suppliers in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database. STATUS: run on PostgreSQL 18.6; the project owner reports all 8 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if raw customers or suppliers already have rows. Nothing is changed.

@@ -28,7 +28,8 @@ Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cro
 | Assumptions register (`docs/assumptions_register.xlsx`) | Accepted as proposed by the owner (bulk accept, not reviewed row by row). VAT and seasonality rows still open |
 | Reference data (lookup lists) | Run; row counts verified (reported) |
 | Stage 5: code columns in core and 16 raw tables (`sql/03_raw/run_stage_5.sql`, includes its own check) | Run on PostgreSQL 18.6; all 3 checks passed (reported by the project owner) |
-| Stage 6: customers and suppliers in raw, with planted errors (`sql/04_generate/run_stage_6.sql`, includes its own check) | Written, **not yet run** |
+| Stage 6: customers and suppliers in raw, with planted errors (`sql/04_generate/run_stage_6.sql`, includes its own check) | Run on PostgreSQL 18.6; all 8 checks passed (reported by the project owner) |
+| Stage 7: products and rental assets in raw (`sql/04_generate/run_stage_7.sql`, includes its own check) | Written, **not yet run** |
 | Data generator | Not started |
 | Staging, mart, SQL analysis, tests, Power BI | Not started |
 
