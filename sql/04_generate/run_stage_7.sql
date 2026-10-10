@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 7 in one file: create fake products and rental assets in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 6. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 6. STATUS: run on PostgreSQL 18.6; the project owner reports all 11 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if Stage 6 has not been run, or if products or assets already exist.
