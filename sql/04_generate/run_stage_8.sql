@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 8 in one file: fake projects-division quotes, jobs and job costs in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 7. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 7. STATUS: run on PostgreSQL 18.6; the project owner reports all 12 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if Stage 7 has not been run, or if quotes, jobs or job costs already exist.
