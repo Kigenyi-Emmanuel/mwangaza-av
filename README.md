@@ -32,7 +32,8 @@ Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cro
 | Stage 7: products and rental assets in raw (`sql/04_generate/run_stage_7.sql`, includes its own check) | Run on PostgreSQL 18.6; all 11 checks passed (reported by the project owner) |
 | Stage 8: projects quotes, jobs and job costs in raw (`sql/04_generate/run_stage_8.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
 | Stage 9: products quotes, sales orders and stock movements in raw (`sql/04_generate/run_stage_9.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
-| Stage 10: rental bookings, booked assets and repairs in raw (`sql/04_generate/run_stage_10.sql`, includes its own check) | Written, **not yet run** |
+| Stage 10: rental bookings, booked assets and repairs in raw (`sql/04_generate/run_stage_10.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
+| Stage 11: rental quotes in raw (`sql/04_generate/run_stage_11.sql`, includes its own check) | Written, **not yet run** |
 | Data generator | Not started |
 | Staging, mart, SQL analysis, tests, Power BI | Not started |
 

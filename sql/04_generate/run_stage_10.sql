@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 10 in one file: fake rental bookings, booked assets and repairs in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 9. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 9. STATUS: run on PostgreSQL 18.6; the project owner reports all 12 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if Stage 9 has not been run, or if rental data already exists.
