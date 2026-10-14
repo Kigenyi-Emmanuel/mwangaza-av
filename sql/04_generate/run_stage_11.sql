@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 11 in one file: fake rental quotes (won, lost, expired and open) in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 10. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 10. STATUS: run on PostgreSQL 18.6; the project owner reports it ran smoothly (the result table was not shown to Claude).
 --
 -- What it does, in plain words:
 --   1. Stops with an error if Stage 10 has not been run, or if rental quotes already exist.
