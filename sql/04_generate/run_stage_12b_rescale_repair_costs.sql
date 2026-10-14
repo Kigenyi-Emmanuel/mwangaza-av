@@ -1,5 +1,5 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 12b: bring rental repair costs down to a believable size. STATUS: written, not yet run.
+-- STAGE 12b: bring rental repair costs down to a believable size. STATUS: run on PostgreSQL 18.6; the project owner reports rows 1 to 5 PASS and row 6 information only (repair and service cost 10.6 percent of rental billing; profile saved in tests/results).
 -- Run it ONCE, in the mwangaza_av database, only if you AGREE with the change (see the explanation below).
 --
 -- Why: the data profile after Stage 12 showed repair and service costs equal to 24.7 percent of rental
