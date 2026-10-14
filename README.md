@@ -34,7 +34,10 @@ Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cro
 | Stage 9: products quotes, sales orders and stock movements in raw (`sql/04_generate/run_stage_9.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
 | Stage 10: rental bookings, booked assets and repairs in raw (`sql/04_generate/run_stage_10.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
 | Stage 11: rental quotes in raw (`sql/04_generate/run_stage_11.sql`, includes its own check) | Run on PostgreSQL 18.6; reported as smooth by the project owner (result table not yet recorded) |
-| Stage 12: invoices, payments and allocations in raw (`sql/04_generate/run_stage_12.sql`, includes its own check) | Written, **not yet run** |
+| Stage 12: invoices, payments and allocations in raw (`sql/04_generate/run_stage_12.sql`, includes its own check) | Run on PostgreSQL 18.6; all 14 checks passed (reported by the project owner) |
+| Raw data profile (`sql/05_profile/01_raw_profile.sql`, read-only) | Run; result saved in `tests/results/raw_profile_before_repair_fix.csv` |
+| Stage 12b: rescale rental repair costs (`sql/04_generate/run_stage_12b_rescale_repair_costs.sql`) | Written, **not yet run**; waits for the owner's decision |
+| Test log (`docs/test-log.md`) | Written. Results are owner-reported; result tables not yet saved |
 | Data generator | Not started |
 | Staging, mart, SQL analysis, tests, Power BI | Not started |
 

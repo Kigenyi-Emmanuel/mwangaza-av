@@ -1,0 +1,42 @@
+area,metric,value
+Row counts,raw.customer,156
+Row counts,raw.supplier,15
+Row counts,raw.product,80
+Row counts,raw.asset,120
+Row counts,raw.quote,2847
+Row counts,raw.job,117
+Row counts,raw.job_cost_line,1206
+Row counts,raw.sales_order,593
+Row counts,raw.sales_order_line,1440
+Row counts,raw.stock_movement,2000
+Row counts,raw.rental_booking,6391
+Row counts,raw.rental_booking_line,17449
+Row counts,raw.maintenance_event,1039
+Row counts,raw.invoice,7276
+Row counts,raw.payment,6405
+Row counts,raw.payment_allocation,7978
+Billing,"Invoiced before VAT, projects (KES millions)",355.0
+Billing,"Invoiced before VAT, products (KES millions)",380.6
+Billing,"Invoiced before VAT, rentals (KES millions)",882.9
+Billing,Share of billing: projects (percent),21.9
+Billing,Share of billing: products (percent),23.5
+Billing,Share of billing: rentals (percent),54.6
+Cash,Total invoiced including VAT (KES millions),1877.4
+Cash,Total allocated to invoices by payments (KES millions),1805.6
+Cash,Roughly unpaid at the as-of date (KES millions),71.8
+Projects,Finished jobs,110
+Projects,Jobs still in progress,7
+Projects,Average quoted price of a job (KES millions),3.10
+Projects,Average margin of finished jobs (percent),26.6
+Products,Delivered sales orders,586
+Products,Average order value (KES thousands),649
+Products,Margin on all order lines after discounts (percent),13.5
+Rentals,Bookings,6391
+Rentals,Average booking value (KES thousands),138
+Rentals,Repair and service cost (KES millions),218.0
+Rentals,Repair and service cost as a share of rental billing (percent),24.7
+Customers,Customers with at least one invoice,147
+Customers,Share of billing from the top 10 customers (percent),32.5
+Quotes,"Win rate, projects (percent)",44.2
+Quotes,"Win rate, products (percent)",63.7
+Quotes,"Win rate, rentals (percent)",72.3

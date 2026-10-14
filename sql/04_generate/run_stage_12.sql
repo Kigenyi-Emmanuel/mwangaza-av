@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 12 in one file: fake invoices, payments and payment allocations for all three divisions (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 11. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 11. STATUS: run on PostgreSQL 18.6; the project owner reports all 14 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if Stage 11 has not been run, or if invoices or payments already exist.
