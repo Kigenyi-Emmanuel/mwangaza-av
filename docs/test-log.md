@@ -32,3 +32,4 @@ ranges. They show the generator behaves as designed. They do not show the data i
 | 12b (profile after) | `sql/05_profile/01_raw_profile.sql` | Read-only profile after the fix | Run; table pasted by the owner. Repair and service cost 10.6 percent of rental billing | yes: `tests/results/raw_profile_after_repair_fix.csv` |
 | 13 | `sql/06_staging/run_stage_13.sql` | 5 checks | All PASS (reported) | no |
 | 14 | `sql/06_staging/run_stage_14.sql` | 15 checks, including comparison with the answer key | All PASS (reported) | no |
+| 15 | `sql/06_staging/run_stage_15.sql` | 17 checks, including answer-key and reconciliation checks | All PASS (reported) | no |

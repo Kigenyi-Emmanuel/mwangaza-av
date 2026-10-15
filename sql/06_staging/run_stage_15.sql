@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 15 in one file: clean quotes, jobs, job costs, sales orders and stock movements into staging.
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 14. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 14. STATUS: run on PostgreSQL 18.6; the project owner reports all 17 checks passed.
 -- (Rentals and billing are cleaned in Stage 16, because that is where most of the planted problems are.)
 --
 -- What it does, in plain words:
