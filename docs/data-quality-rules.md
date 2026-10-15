@@ -13,7 +13,7 @@ These rules decide what the cleaning step (staging) does to the raw data. Every 
 | Rule | Applies to | What happens | Action |
 |---|---|---|---|
 | DQ01 | all | Trim extra spaces, and write status and type words in one standard form (for example all lower case) | fix |
-| DQ02 | all | Convert text to dates and numbers. A row that cannot be converted is rejected | reject |
+| DQ02 | all | Convert text to dates and numbers. A row that cannot be converted, or that breaks a basic rule of the clean tables (for example a decision date before the quote date), is rejected | reject |
 | DQ03 | customer | Customers whose names match once capitals, extra spaces and a leading 'The' are ignored are the same customer. The lowest customer code is kept as the real one | fix |
 | DQ04 | customer | A blank or missing sector becomes 'Unknown' and is logged | fix |
 | DQ05 | quote, job, sales_order, rental_booking, invoice, payment | Customer codes of duplicate customers are replaced by the real customer code. The original code is kept in its own column | fix |

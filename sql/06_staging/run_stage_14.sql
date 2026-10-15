@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 14 in one file: clean the master data (customers, suppliers, products, assets) into staging.
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 13. STATUS: written, not yet run.
+-- Run it ONCE, in the mwangaza_av database, AFTER Stage 13. STATUS: run on PostgreSQL 18.6; the project owner reports all 15 checks passed.
 --
 -- What it does, in plain words:
 --   1. Stops with an error if Stage 13 has not been run, or if staging already holds data.

@@ -38,7 +38,8 @@ Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cro
 | Raw data profile (`sql/05_profile/01_raw_profile.sql`, read-only) | Run; result saved in `tests/results/raw_profile_before_repair_fix.csv` |
 | Stage 12b: rescale rental repair costs (`sql/04_generate/run_stage_12b_rescale_repair_costs.sql`) | Run on PostgreSQL 18.6; checks 1 to 5 passed, row 6 information (reported by the project owner). Profile after the fix saved in `tests/results/raw_profile_after_repair_fix.csv` |
 | Stage 13: cleaning area (staging tables, quality-rule catalogue, issue and reject logs) (`sql/06_staging/run_stage_13.sql`, includes its own check) | Run on PostgreSQL 18.6; all 5 checks passed (reported by the project owner) |
-| Stage 14: clean customers, suppliers, products and assets into staging; find duplicate customers; check against the answer key (`sql/06_staging/run_stage_14.sql`, includes its own check) | Written, **not yet run** |
+| Stage 14: clean customers, suppliers, products and assets into staging; find duplicate customers; check against the answer key (`sql/06_staging/run_stage_14.sql`, includes its own check) | Run on PostgreSQL 18.6; all 15 checks passed (reported by the project owner) |
+| Stage 15: clean quotes, jobs, job costs, sales orders and stock movements into staging (`sql/06_staging/run_stage_15.sql`, includes its own check) | Written, **not yet run** |
 | Test log (`docs/test-log.md`) | Written. Results are owner-reported; result tables not yet saved |
 | Data generator | Not started |
 | Staging, mart, SQL analysis, tests, Power BI | Not started |
