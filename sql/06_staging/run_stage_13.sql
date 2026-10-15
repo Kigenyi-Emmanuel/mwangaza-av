@@ -1,5 +1,5 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 13 in one file: build the cleaning area (staging). STATUS: written, not yet run.
+-- STAGE 13 in one file: build the cleaning area (staging). STATUS: run on PostgreSQL 18.6; the project owner reports all 5 checks passed.
 -- Run it ONCE, in the mwangaza_av database, after Stage 12 (and Stage 12b). It creates empty tables only.
 --
 -- What it does, in plain words:

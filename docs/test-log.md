@@ -30,3 +30,4 @@ ranges. They show the generator behaves as designed. They do not show the data i
 | 12 (profile) | `sql/05_profile/01_raw_profile.sql` | Read-only profile of the raw layer | Run; table pasted by the owner | yes: `tests/results/raw_profile_before_repair_fix.csv` |
 | 12b | `sql/04_generate/run_stage_12b_rescale_repair_costs.sql` | 5 checks plus one information row | Rows 1 to 5 PASS (reported); row 6 information | no (but the profile after the fix is saved) |
 | 12b (profile after) | `sql/05_profile/01_raw_profile.sql` | Read-only profile after the fix | Run; table pasted by the owner. Repair and service cost 10.6 percent of rental billing | yes: `tests/results/raw_profile_after_repair_fix.csv` |
+| 13 | `sql/06_staging/run_stage_13.sql` | 5 checks | All PASS (reported) | no |
