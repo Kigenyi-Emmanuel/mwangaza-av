@@ -33,3 +33,5 @@ ranges. They show the generator behaves as designed. They do not show the data i
 | 13 | `sql/06_staging/run_stage_13.sql` | 5 checks | All PASS (reported) | no |
 | 14 | `sql/06_staging/run_stage_14.sql` | 15 checks, including comparison with the answer key | All PASS (reported) | no |
 | 15 | `sql/06_staging/run_stage_15.sql` | 17 checks, including answer-key and reconciliation checks | All PASS (reported) | no |
+| 16 | `sql/06_staging/run_stage_16.sql` | 25 checks, including answer-key and money reconciliation checks | All PASS (reported) | no |
+| 17 | `sql/07_load/run_stage_17.sql` and `run_stage_17_check_only.sql` | 18 checks | First run: error in the final check statement (`column "actual" does not exist`, a typo in my check query, now fixed). Check-only file: 18 rows, all PASS (reported) | no |

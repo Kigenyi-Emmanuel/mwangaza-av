@@ -1,5 +1,5 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 16 in one file: clean rentals and billing into staging. STATUS: written, not yet run.
+-- STAGE 16 in one file: clean rentals and billing into staging. STATUS: run on PostgreSQL 18.6; the project owner reports all 25 checks passed.
 -- Run it ONCE, in the mwangaza_av database, AFTER Stage 15.
 -- This is the stage where most of the planted problems are found.
 --
