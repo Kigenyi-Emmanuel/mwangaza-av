@@ -1,12 +1,12 @@
 -- Mwangaza AV (synthetic case study)
 -- Stage 4: load the small lookup lists (reference data) straight into the core layer.
 -- Run while connected to mwangaza_av, after all core scripts.
--- STATUS: run on PostgreSQL 18.6 (reported by the project owner). All values are synthetic and generic.
+-- Executed on PostgreSQL 18.6. All values are synthetic and generic.
 --
 -- Everything sits inside one transaction (BEGIN ... COMMIT), so it is all or nothing.
 -- If any line fails, nothing from this script is saved.
 -- Running it a second time fails on the UNIQUE rules and adds nothing (no duplicates).
--- Edit the lists below BEFORE running if you want different names.
+-- The names in the lists below can be changed before the first run.
 
 BEGIN;
 

@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- NULL AUDIT of the core tables. READ-ONLY: it only counts. It changes nothing.
--- Run it any time after Stage 17, in the mwangaza_av database. STATUS: written, not yet run.
+-- Run it any time after Stage 17, in the mwangaza_av database. Status: not yet executed.
 --
 -- Why: some core columns are meant to be empty (NULL) for some rows. This query counts the NULLs in each
 -- such column and compares the count with what the design says it should be.

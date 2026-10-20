@@ -1,13 +1,14 @@
 -- Mwangaza AV (synthetic case study)
--- NOTE (fixed 2026-10-15): the first row of the check at the end was missing its "actual" label, which made
--- the LAST statement fail with: column "actual" does not exist. The load itself comes before that and is
--- committed first. If you already ran this file once, do NOT run it again: run
--- sql/07_load/run_stage_17_check_only.sql instead. (Running it again is harmless: the safety check stops it.)
+-- Change note (2026-10-15): the first row of the final check was missing its "actual" label, which made the last
+-- statement fail with: column "actual" does not exist. The load is committed before that statement runs.
+-- To re-check an existing load, run sql/07_load/run_stage_17_check_only.sql. Re-running this file is harmless:
+-- its first safety check stops it when the core tables already hold data.
 --
--- STAGE 17 in one file: load the cleaned data from staging into the core tables. STATUS: the load ran and committed on PostgreSQL 18.6 (confirmed by the check-only file: 18 rows, all PASS, reported by the project owner). The check at the end of THIS file had a typo, now fixed.
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 16.
+-- STAGE 17 in one file: load the cleaned data from staging into the core tables. Executed on PostgreSQL 18.6;
+-- the load committed and the check-only file returned 18 rows, all PASS.
+-- Run order: once, in the mwangaza_av database, after Stage 16.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 16 has not been run, or if the core tables already hold data.
 --   2. Adds the sector "Unknown" to the sector list (the customers whose sector was missing use it).
 --   3. Loads the clean tables in the right order (customers first, payments last). Only the REAL customers are
@@ -17,9 +18,9 @@
 --   4. Runs ANALYZE, which lets PostgreSQL learn the size of the new tables so queries run well.
 --   5. Checks the load: row counts match staging, the money totals reconcile to the cent against the generator's
 --      own totals, and the rules that the tables cannot enforce on their own all hold.
---   6. Shows one result table at the end. Every row should say PASS.
+--   6. Returns one result table at the end; every row should read PASS.
 --
--- Safe: the load is one all-or-nothing block (BEGIN ... COMMIT). It never changes raw or staging data.
+-- Safety: the load is one all-or-nothing block (BEGIN ... COMMIT). It never changes raw or staging data.
 -- It deletes nothing. It adds rows to core tables that are empty now.
 
 BEGIN;

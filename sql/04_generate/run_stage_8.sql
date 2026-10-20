@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 8 in one file: fake projects-division quotes, jobs and job costs in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 7. STATUS: run on PostgreSQL 18.6; the project owner reports all 12 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 7. Executed on PostgreSQL 18.6; all 12 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 7 has not been run, or if quotes, jobs or job costs already exist.
 --   2. Creates about 267 projects quotes spread over 3 years. Some are won, some lost, some expire,
 --      and the newest are still open.
@@ -12,11 +12,11 @@
 --        X07  one job type (Auditorium and hall fit-out) loses money on average
 --        X12  quotes that take more than 45 days to decide are won less often
 --      It also makes some quotes and jobs use the DUPLICATE customer codes from Stage 6.
---   5. Shows one result table at the end. Every row should say PASS.
+--   5. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It deletes nothing that exists.
--- The numbers below are a copy of docs/assumptions_register.xlsx. If you change the Excel file,
+-- The numbers below are a copy of docs/assumptions_register.xlsx. If the register workbook changes,
 -- this copy must be updated too.
 -- Dates: history runs 2023-10-01 to 2026-09-30. The "as-of" date is 2026-09-30 (register rows G01 and G02).
 -- Revenue of a job is its quoted price (no extra charges or discounts are modelled).

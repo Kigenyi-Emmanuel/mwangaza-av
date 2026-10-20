@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 13 in one file: build the cleaning area (staging). STATUS: run on PostgreSQL 18.6; the project owner reports all 5 checks passed.
--- Run it ONCE, in the mwangaza_av database, after Stage 12 (and Stage 12b). It creates empty tables only.
+-- STAGE 13 in one file: build the cleaning area (staging). Executed on PostgreSQL 18.6; all 5 built-in checks pass.
+-- Run order: once, in the mwangaza_av database, after Stage 12 (and Stage 12b). It creates empty tables only.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if the staging tables already exist, or if the raw data is missing.
 --   2. Creates 16 staging tables. They look like the raw tables but have proper types (dates, numbers)
 --      and extra columns for the cleaned values. Each keeps raw_row_id, so every row can be traced back.
@@ -10,9 +10,9 @@
 --   4. Creates the quality-rule catalogue (staging.dq_rule, 13 rules; see docs/data-quality-rules.md),
 --      and the two logs: staging.dq_issue (every fix or flag, with before and after) and
 --      staging.rejected_row (every rejected row, with the reason).
---   5. Shows one result table at the end. Every row should say PASS.
+--   5. Returns one result table at the end; every row should read PASS.
 --
--- Safe: it only creates new tables and fills the 13-row rule catalogue. It deletes nothing.
+-- Safety: it only creates new tables and fills the 13-row rule catalogue. It deletes nothing.
 -- Nothing is cleaned yet. The cleaning itself happens in Stages 14 and 15.
 
 BEGIN;

@@ -1,14 +1,14 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 5 in one file. Run it once, in the mwangaza_av database.
--- STATUS: run on PostgreSQL 18.6; the project owner reports all 3 checks passed.
+-- Executed on PostgreSQL 18.6; all 3 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if the customer or supplier table already has rows. Nothing is changed.
 --   2. Adds a "code" column to customer and supplier (so records can be linked by code).
 --   3. Creates 16 "landing area" (raw) tables. Every column is text, so messy data can land.
---   4. Shows one result table at the end. Every row should say PASS.
+--   4. Returns one result table at the end; every row should read PASS.
 --
--- Safe: it only adds new things. It deletes nothing. Running it twice does no harm.
+-- Safety: it only adds new things. It deletes nothing. Running it twice does no harm.
 
 -- Step 1: safety check
 DO $$

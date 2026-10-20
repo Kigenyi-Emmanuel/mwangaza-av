@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 9 in one file: fake products-division quotes, sales orders and stock movements in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 8. STATUS: run on PostgreSQL 18.6; the project owner reports all 12 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 8. Executed on PostgreSQL 18.6; all 12 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 8 has not been run, or if product quotes, orders or stock movements exist.
 --   2. Creates about 369 products quotes. About 65 percent are won and become sales orders.
 --      It also creates about 360 counter (walk-in) orders that never had a quote. Total: about 600 orders.
@@ -11,11 +11,11 @@
 --      and a few stock adjustments. Stock never goes below zero.
 --   5. Keeps the planted problem X11: the 10 dead-stock products stop selling 12 months before the
 --      as-of date, but still sit in stock (they were over-bought in 2025).
---   6. Shows one result table at the end. Every row should say PASS.
+--   6. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It deletes nothing that exists.
--- The numbers below are a copy of docs/assumptions_register.xlsx. If you change the Excel file,
+-- The numbers below are a copy of docs/assumptions_register.xlsx. If the register workbook changes,
 -- this copy must be updated too.
 -- Dates: history runs 2023-10-01 to 2026-09-30. The "as-of" date is 2026-09-30.
 -- Revenue of an order is the sum of its lines. Stock leaves only when an order is delivered.

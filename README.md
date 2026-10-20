@@ -12,47 +12,53 @@ Show how a company-wide analytics system could work for an audio-visual integrat
 - Which quotes win, and which products do not sell?
 - What is each customer worth across all three divisions?
 
-## Architecture (proposed)
+## Architecture
 `raw` -> `staging` -> `core` (normalised) -> `mart` (star schema) -> SQL analysis -> Power BI (3 pages)
 
-Tools: PostgreSQL (12 or newer), Excel (assumptions register and independent cross-checks), Power BI.
+## Tools
+- **PostgreSQL 18.6** (Windows): data generation, cleaning, loading and analysis, all in SQL
+- **Excel**: assumptions register (`docs/assumptions_register.xlsx`); independent cross-checks of key SQL results are planned
+- **Power BI**: reporting pages on top of the star schema (planned)
+- **GitHub**: version control and hosting; changes are committed through the GitHub web interface
+- **AI assistance (Claude, by Anthropic)**: used as a design and coding assistant for architecture discussion, drafting SQL, test design and documentation. Every script was executed on PostgreSQL and its built-in checks were run by the author.
 
-## Status (updated honestly as work happens)
+## Status
 | Component | Status |
 |---|---|
-| Design (model, metrics, assumptions research) | Drafted, in review |
-| Database and schemas script | Run on PostgreSQL 18.6 (reported by the project owner) |
-| Core tables: shared + projects division | Run: 8 tables present (list reported by the project owner) |
+| Design (model, metrics, assumptions research) | Documented in `docs/` |
+| Database and schemas script | Run on PostgreSQL 18.6 |
+| Core tables: shared + projects division | Run: 8 tables present |
 | Core tables: products, rentals, billing | Run on PostgreSQL 18.6 |
-| Structure checks (`tests/01_core_structure_checks.sql`) | Run; reported as passed. Output not yet saved in the repo |
-| Assumptions register (`docs/assumptions_register.xlsx`) | Accepted as proposed by the owner (bulk accept, not reviewed row by row). VAT and seasonality rows still open |
-| Reference data (lookup lists) | Run; row counts verified (reported) |
-| Stage 5: code columns in core and 16 raw tables (`sql/03_raw/run_stage_5.sql`, includes its own check) | Run on PostgreSQL 18.6; all 3 checks passed (reported by the project owner) |
-| Stage 6: customers and suppliers in raw, with planted errors (`sql/04_generate/run_stage_6.sql`, includes its own check) | Run on PostgreSQL 18.6; all 8 checks passed (reported by the project owner) |
-| Stage 7: products and rental assets in raw (`sql/04_generate/run_stage_7.sql`, includes its own check) | Run on PostgreSQL 18.6; all 11 checks passed (reported by the project owner) |
-| Stage 8: projects quotes, jobs and job costs in raw (`sql/04_generate/run_stage_8.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
-| Stage 9: products quotes, sales orders and stock movements in raw (`sql/04_generate/run_stage_9.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
-| Stage 10: rental bookings, booked assets and repairs in raw (`sql/04_generate/run_stage_10.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed (reported by the project owner) |
-| Stage 11: rental quotes in raw (`sql/04_generate/run_stage_11.sql`, includes its own check) | Run on PostgreSQL 18.6; reported as smooth by the project owner (result table not yet recorded) |
-| Stage 12: invoices, payments and allocations in raw (`sql/04_generate/run_stage_12.sql`, includes its own check) | Run on PostgreSQL 18.6; all 14 checks passed (reported by the project owner) |
+| Structure checks (`tests/01_core_structure_checks.sql`) | Run; passed. Output not yet saved in `tests/results` |
+| Assumptions register (`docs/assumptions_register.xlsx`) | Accepted as working values (in bulk). VAT and seasonality rows still open |
+| Reference data (lookup lists) | Run; row counts verified |
+| Stage 5: code columns in core and 16 raw tables (`sql/03_raw/run_stage_5.sql`, includes its own check) | Run on PostgreSQL 18.6; all 3 checks passed |
+| Stage 6: customers and suppliers in raw, with planted errors (`sql/04_generate/run_stage_6.sql`, includes its own check) | Run on PostgreSQL 18.6; all 8 checks passed |
+| Stage 7: products and rental assets in raw (`sql/04_generate/run_stage_7.sql`, includes its own check) | Run on PostgreSQL 18.6; all 11 checks passed |
+| Stage 8: projects quotes, jobs and job costs in raw (`sql/04_generate/run_stage_8.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed |
+| Stage 9: products quotes, sales orders and stock movements in raw (`sql/04_generate/run_stage_9.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed |
+| Stage 10: rental bookings, booked assets and repairs in raw (`sql/04_generate/run_stage_10.sql`, includes its own check) | Run on PostgreSQL 18.6; all 12 checks passed |
+| Stage 11: rental quotes in raw (`sql/04_generate/run_stage_11.sql`, includes its own check) | Run on PostgreSQL 18.6 |
+| Stage 12: invoices, payments and allocations in raw (`sql/04_generate/run_stage_12.sql`, includes its own check) | Run on PostgreSQL 18.6; all 14 checks passed |
 | Raw data profile (`sql/05_profile/01_raw_profile.sql`, read-only) | Run; result saved in `tests/results/raw_profile_before_repair_fix.csv` |
-| Stage 12b: rescale rental repair costs (`sql/04_generate/run_stage_12b_rescale_repair_costs.sql`) | Run on PostgreSQL 18.6; checks 1 to 5 passed, row 6 information (reported by the project owner). Profile after the fix saved in `tests/results/raw_profile_after_repair_fix.csv` |
-| Stage 13: cleaning area (staging tables, quality-rule catalogue, issue and reject logs) (`sql/06_staging/run_stage_13.sql`, includes its own check) | Run on PostgreSQL 18.6; all 5 checks passed (reported by the project owner) |
-| Stage 14: clean customers, suppliers, products and assets into staging; find duplicate customers; check against the answer key (`sql/06_staging/run_stage_14.sql`, includes its own check) | Run on PostgreSQL 18.6; all 15 checks passed (reported by the project owner) |
-| Stage 15: clean quotes, jobs, job costs, sales orders and stock movements into staging (`sql/06_staging/run_stage_15.sql`, includes its own check) | Run on PostgreSQL 18.6; all 17 checks passed (reported by the project owner) |
-| Stage 16: clean rentals and billing into staging; remove duplicate invoices, fix due dates, fix oversized allocations, flag double-bookings; check against the answer key (`sql/06_staging/run_stage_16.sql`, includes its own check) | Run on PostgreSQL 18.6; all 25 checks passed (reported by the project owner) |
-| Stage 17: load the cleaned data into the core tables and reconcile (`sql/07_load/run_stage_17.sql`; check also in `run_stage_17_check_only.sql`) | Run on PostgreSQL 18.6. The first run's final check query had a labelling typo (fixed). The check-only file returned 18 rows, all PASS (reported by the project owner) |
+| Stage 12b: rescale rental repair costs (`sql/04_generate/run_stage_12b_rescale_repair_costs.sql`) | Run on PostgreSQL 18.6; checks 1 to 5 passed, row 6 information. Profile after the fix saved in `tests/results/raw_profile_after_repair_fix.csv` |
+| Stage 13: cleaning area (staging tables, quality-rule catalogue, issue and reject logs) (`sql/06_staging/run_stage_13.sql`, includes its own check) | Run on PostgreSQL 18.6; all 5 checks passed |
+| Stage 14: clean customers, suppliers, products and assets into staging; find duplicate customers; check against the answer key (`sql/06_staging/run_stage_14.sql`, includes its own check) | Run on PostgreSQL 18.6; all 15 checks passed |
+| Stage 15: clean quotes, jobs, job costs, sales orders and stock movements into staging (`sql/06_staging/run_stage_15.sql`, includes its own check) | Run on PostgreSQL 18.6; all 17 checks passed |
+| Stage 16: clean rentals and billing into staging; remove duplicate invoices, fix due dates, fix oversized allocations, flag double-bookings; check against the answer key (`sql/06_staging/run_stage_16.sql`, includes its own check) | Run on PostgreSQL 18.6; all 25 checks passed |
+| Stage 17: load the cleaned data into the core tables and reconcile (`sql/07_load/run_stage_17.sql`; check also in `run_stage_17_check_only.sql`) | Run on PostgreSQL 18.6. The first run's final check query had a labelling typo (fixed). The check-only file returned 18 rows, all PASS |
 | NULL audit of the core tables (`sql/08_audit/01_null_audit.sql`, read-only) and `docs/null-meanings.md` | Written, **not yet run** |
-| Test log (`docs/test-log.md`) | Written. Results are owner-reported; result tables not yet saved |
-| Data generator | Not started |
-| Staging, mart, SQL analysis, tests, Power BI | Not started |
+| Stage 18: reporting layer, a star schema in the `mart` schema, with reconciliation checks (`sql/09_mart/run_stage_18.sql`, `docs/star-schema.md`) | Written; not yet executed |
+| Test log (`docs/test-log.md`) | Written. Saved result tables are in `tests/results` (data profiles; other stages not yet saved) |
+| Data generator (Stages 6 to 12b) | Done (see the stage rows) |
+| SQL analysis (business questions) and Power BI pages | Not started |
 
 ## Known limitations
 - Synthetic data reflects our assumptions. It cannot discover facts about a real business.
 - Gross margin only. Overheads, payroll, depreciation and tax are not modelled.
 - One currency (KES). No history of changes to customers or prices.
 - All customer and supplier names are made up from word lists. Any match with a real organisation is coincidence.
-- Generator ranges are anchored on public vendor and trade sources (mostly US and UK). See the assumptions register when it is added.
+- Generator ranges are anchored on public vendor and trade sources (mostly US and UK). See `docs/assumptions_register.xlsx`.
 
 ## Licence
 To be decided.

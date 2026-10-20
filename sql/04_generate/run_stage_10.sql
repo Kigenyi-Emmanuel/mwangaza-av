@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 10 in one file: fake rental bookings, booked assets and repairs in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 9. STATUS: run on PostgreSQL 18.6; the project owner reports all 12 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 9. Executed on PostgreSQL 18.6; all 12 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 9 has not been run, or if rental data already exists.
 --   2. Gives every asset its own run of rentals along its life, sized so the asset is on hire for the
 --      share of days set in the register (event kit about 40 percent, core fleet about 65 percent,
@@ -14,11 +14,11 @@
 --   5. Plants two problems on purpose, and records them in the answer key:
 --        X09  15 assets are double-booked (a second booking falls inside an existing one)
 --        X10  the idle assets are hired under 10 percent of the time and cost a lot to repair
---   6. Shows one result table at the end. Every row should say PASS.
+--   6. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It deletes nothing that exists.
--- The numbers below are a copy of docs/assumptions_register.xlsx. If you change the Excel file,
+-- The numbers below are a copy of docs/assumptions_register.xlsx. If the register workbook changes,
 -- this copy must be updated too.
 -- Dates: history runs 2023-10-01 to 2026-09-30. The "as-of" date is 2026-09-30.
 -- Every booking is completed and ends on or before the as-of date. Quotes for bookings come in Stage 11.

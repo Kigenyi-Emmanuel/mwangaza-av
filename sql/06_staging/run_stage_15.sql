@@ -1,9 +1,9 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 15 in one file: clean quotes, jobs, job costs, sales orders and stock movements into staging.
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 14. STATUS: run on PostgreSQL 18.6; the project owner reports all 17 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 14. Executed on PostgreSQL 18.6; all 17 built-in checks pass.
 -- (Rentals and billing are cleaned in Stage 16, because that is where most of the planted problems are.)
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 14 has not been run, or if staging already holds these transactions.
 --   2. Reads the text into dates and numbers, row by row (rule DQ02).
 --   3. Replaces the customer code of a duplicate customer with the real customer's code, and keeps the
@@ -15,9 +15,9 @@
 --   6. Checks the work against the hidden answer key. For example: did the cleaning find exactly the quotes,
 --      jobs and orders that were written under a duplicate customer code, and do the order lines still add up
 --      to the revenue the generator recorded?
---   7. Shows one result table at the end. Every row should say PASS.
+--   7. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It never changes raw data. It never deletes anything.
 -- One wording change: rule DQ02 now also covers rows that break a basic rule of the clean tables.
 

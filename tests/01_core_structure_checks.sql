@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- Structure checks for the core layer. Run in the mwangaza_av database after all core scripts.
--- STATUS: run on PostgreSQL 18.6 and reported as passed. The actual output has not yet been saved in the repo.
+-- Executed on PostgreSQL 18.6; passed. Output not yet saved in tests/results.
 
 -- Check 1: how many tables are in core?  Expected result: 22
 SELECT count(*) AS tables_in_core

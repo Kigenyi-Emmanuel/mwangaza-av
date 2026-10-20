@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 12 in one file: fake invoices, payments and payment allocations for all three divisions (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 11. STATUS: run on PostgreSQL 18.6; the project owner reports all 14 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 11. Executed on PostgreSQL 18.6; all 14 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 11 has not been run, or if invoices or payments already exist.
 --   2. Raises invoices: projects jobs are billed in 1 to 4 parts, each product order is billed once it is
 --      delivered, each rental booking is billed after it ends. VAT is added.
@@ -14,11 +14,11 @@
 --        X01  12 invoices are entered twice (a second invoice number for the same job, order or booking)
 --        X03  6 payments have an allocation larger than the payment itself
 --        X04  8 invoices have a due date BEFORE the invoice date
---   6. Shows one result table at the end. Every row should say PASS.
+--   6. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It deletes nothing that exists.
--- The numbers below are a copy of docs/assumptions_register.xlsx. If you change the Excel file,
+-- The numbers below are a copy of docs/assumptions_register.xlsx. If the register workbook changes,
 -- this copy must be updated too.
 -- Dates: history runs 2023-10-01 to 2026-09-30. The "as-of" date is 2026-09-30.
 -- VAT uses register row P11 (16 percent). That rate still has to be verified before it is relied on.

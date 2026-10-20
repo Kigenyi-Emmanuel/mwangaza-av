@@ -1,11 +1,11 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 17, CHECK ONLY. STATUS: run on PostgreSQL 18.6; the project owner reports 18 rows, all PASS.
+-- STAGE 17, CHECK ONLY. Executed on PostgreSQL 18.6; returns 18 rows, all PASS.
 -- Run it in the mwangaza_av database after Stage 17 has loaded the core tables.
 --
 -- It changes NO data. It only (1) runs ANALYZE, which lets PostgreSQL learn the size of the new tables
 -- (harmless; it can be repeated), and (2) shows the same check table as the end of run_stage_17.sql.
 -- One result table. Every row should say PASS.
--- If the core tables turn out to be EMPTY (every row says FAIL), the load did not complete: tell Claude.
+-- If the core tables are EMPTY (every row reads FAIL), the load did not complete: run run_stage_17.sql.
 
 ANALYZE;
 

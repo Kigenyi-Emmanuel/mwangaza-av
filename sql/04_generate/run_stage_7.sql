@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 7 in one file: create fake products and rental assets in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 6. STATUS: run on PostgreSQL 18.6; the project owner reports all 11 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 6. Executed on PostgreSQL 18.6; all 11 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 6 has not been run, or if products or assets already exist.
 --   2. Adds three more numbers to the answer key area (generator) and the price bands from the register.
 --   3. Creates 80 products and 120 rental assets in raw, priced inside the category bands.
@@ -10,11 +10,11 @@
 --        - some products as dead stock: they will have no sales in the last 12 months (planted error X11)
 --        - some assets as idle and repair-prone: used under 10 percent of the time (planted error X10)
 --      Later stages use these marks when sales and bookings are generated.
---   5. Shows one result table at the end. Every row should say PASS.
+--   5. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It deletes nothing that exists.
--- The numbers below are a copy of docs/assumptions_register.xlsx. If you change the Excel file,
+-- The numbers below are a copy of docs/assumptions_register.xlsx. If the register workbook changes,
 -- this copy must be updated too.
 -- All names are made up from word lists. Prices are placeholders, not Kenyan market prices.
 

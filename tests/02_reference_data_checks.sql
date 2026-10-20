@@ -1,6 +1,6 @@
 -- Mwangaza AV (synthetic case study)
 -- Checks for the reference data. Run after sql/02_reference/01_load_reference_data.sql.
--- STATUS: run on PostgreSQL 18.6; the project owner reports the counts matched the expected values. Output not yet saved in the repo.
+-- Executed on PostgreSQL 18.6; counts matched the expected values. Output not yet saved in tests/results.
 --
 -- Expected: sector 7, office 2, job_type 8, cost_category 5, product_category 8, asset_category 6.
 

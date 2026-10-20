@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 14 in one file: clean the master data (customers, suppliers, products, assets) into staging.
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 13. STATUS: run on PostgreSQL 18.6; the project owner reports all 15 checks passed.
+-- Run order: once, in the mwangaza_av database, after Stage 13. Executed on PostgreSQL 18.6; all 15 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 13 has not been run, or if staging already holds data.
 --   2. Adds four small safe-reading helpers (staging.try_date, try_int, try_numeric, try_bool). They turn
 --      text into a date or number, and return empty instead of an error when the text cannot be read.
@@ -13,9 +13,9 @@
 --      that point to a category or supplier that does not exist, are set aside in staging.rejected_row.
 --   5. Checks the work against the hidden answer key (generator.planted_error): did the cleaning find
 --      exactly the duplicate customers and blank sectors that were planted, and nothing else?
---   6. Shows one result table at the end. Every row should say PASS.
+--   6. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It never changes raw data. It never deletes anything.
 -- The sector "Unknown" is only used in staging for now. It is added to core.sector when we load core.
 

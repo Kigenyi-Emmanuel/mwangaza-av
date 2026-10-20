@@ -1,8 +1,8 @@
 -- Mwangaza AV (synthetic case study)
 -- STAGE 6 in one file: create fake customers and suppliers in the landing area (raw).
--- Run it ONCE, in the mwangaza_av database. STATUS: run on PostgreSQL 18.6; the project owner reports all 8 checks passed.
+-- Run order: once, in the mwangaza_av database. Executed on PostgreSQL 18.6; all 8 built-in checks pass.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if raw customers or suppliers already have rows. Nothing is changed.
 --   2. Creates a small "answer key" area called generator. It holds the numbers from the
 --      assumptions register, hidden facts about each customer, and a list of every planted mistake.
@@ -10,11 +10,11 @@
 --        - the same customer entered twice with the name spelled differently (planted error X02)
 --        - customers with the sector left blank (planted error X05)
 --      It also secretly marks a few customers as habitual late payers (X08), for later stages.
---   4. Shows one result table at the end. Every row should say PASS.
+--   4. Returns one result table at the end; every row should read PASS.
 --
--- Safe: the whole script is one all-or-nothing block (BEGIN ... COMMIT). If a line fails,
+-- Safety: the whole script is one all-or-nothing block (BEGIN ... COMMIT). If a line fails,
 -- nothing from it is saved. It deletes nothing that exists.
--- The numbers below are a copy of docs/assumptions_register.xlsx. If you change the Excel file,
+-- The numbers below are a copy of docs/assumptions_register.xlsx. If the register workbook changes,
 -- this copy must be updated too.
 -- Same seed gives the same data on the same setup. We have not tested other PostgreSQL versions.
 -- All names are made up from word lists. Any match with a real organisation is coincidence.

@@ -1,24 +1,24 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 12b: bring rental repair costs down to a believable size. STATUS: run on PostgreSQL 18.6; the project owner reports rows 1 to 5 PASS and row 6 information only (repair and service cost 10.6 percent of rental billing; profile saved in tests/results).
--- Run it ONCE, in the mwangaza_av database, only if you AGREE with the change (see the explanation below).
+-- STAGE 12b: bring rental repair costs down to a believable size. Executed on PostgreSQL 18.6: checks 1 to 5 pass; row 6 is information only (repair and service cost 10.6 percent of rental billing; profile saved in tests/results).
+-- Run order: once, in the mwangaza_av database, after Stage 12 (see the explanation below).
 --
 -- Why: the data profile after Stage 12 showed repair and service costs equal to 24.7 percent of rental
 -- billing, and about 60 percent of the fleet's purchase price over three years. That is too high for a
--- rental business, and a person from the industry would notice. The cause is my assumption in register
+-- rental business, and a person from the industry would notice. The cause is the assumption in register
 -- row R05 (cost of one damage repair as a share of the asset's price: 2 to 25 percent, central 8 percent),
 -- combined with about 7 damage events per asset over three years. It is not from any source.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops if it was already run, or if there are no maintenance events.
 --   2. Saves a copy of every repair cost first (generator.maintenance_cost_backup), so this can be undone.
 --   3. Multiplies the cost of every DAMAGE repair by 0.4. Routine services are not changed.
 --   4. Updates register row R05 in the answer key to match: 0.8 percent / 3.3 percent / 10 percent.
---   5. Shows one result table. Every row should say PASS.
+--   5. Returns one result table; every row should read PASS.
 --
 -- What changes: only the cost_amount column of raw.maintenance_event (damage repairs only), and one row of
 -- generator.parameter. Nothing is deleted.
 -- Expected effect: repair and service cost falls from about 24.7 percent to about 10 percent of rental
--- billing. The 10 percent is MY JUDGEMENT of a believable level, not a verified industry figure.
+-- billing. The 10 percent is a judgement of a believable level, not a verified industry figure.
 --
 -- TO UNDO (run these two statements):
 --   UPDATE raw.maintenance_event m SET cost_amount = b.old_cost_amount
@@ -80,7 +80,7 @@ FROM (
            (SELECT CASE WHEN low = 0.008 AND central = 0.033 AND high = 0.10 THEN 'yes' ELSE 'no' END
               FROM generator.parameter WHERE parameter_id = 'R05')
     UNION ALL
-    SELECT 5, 'Repair and service cost is between 7 and 14 percent of rental billing (my expectation: about 10)', 'yes',
+    SELECT 5, 'Repair and service cost is between 7 and 14 percent of rental billing (expected: about 10)', 'yes',
            (SELECT CASE WHEN s BETWEEN 7 AND 14 THEN 'yes' ELSE 'no' END
               FROM (SELECT 100 * (SELECT sum(cost_amount::numeric) FROM raw.maintenance_event)
                           / (SELECT sum(amount_ex_vat) FROM generator.invoice_profile WHERE division = 'rentals') AS s) q)

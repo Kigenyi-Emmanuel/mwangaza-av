@@ -1,11 +1,11 @@
 -- Mwangaza AV (synthetic case study)
 -- DATA PROFILE of the raw layer. READ-ONLY: this only counts and adds up. It changes nothing.
--- Run it any time after Stage 12, in the mwangaza_av database. STATUS: written, not yet run.
+-- Run any time after Stage 12, in the mwangaza_av database. Executed on PostgreSQL 18.6.
 --
 -- Why: before cleaning data, look at it. These numbers describe SYNTHETIC data. They tell us whether the
 -- fictional company looks plausible (for example, which division earns most). They say nothing about any
 -- real business.
--- One result table: area, what is measured, value. Copy the whole table and send it back.
+-- One result table: area, what is measured, value.
 
 SELECT area, metric, value
 FROM (

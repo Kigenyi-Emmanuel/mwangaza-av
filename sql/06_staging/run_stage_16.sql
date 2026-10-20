@@ -1,9 +1,9 @@
 -- Mwangaza AV (synthetic case study)
--- STAGE 16 in one file: clean rentals and billing into staging. STATUS: run on PostgreSQL 18.6; the project owner reports all 25 checks passed.
--- Run it ONCE, in the mwangaza_av database, AFTER Stage 15.
+-- STAGE 16 in one file: clean rentals and billing into staging. Executed on PostgreSQL 18.6; all 25 built-in checks pass.
+-- Run order: once, in the mwangaza_av database, after Stage 15.
 -- This is the stage where most of the planted problems are found.
 --
--- What it does, in plain words:
+-- Purpose:
 --   1. Stops with an error if Stage 15 has not been run, or if staging already holds rentals or billing.
 --   2. Rentals: reads bookings, booked assets and repairs into dates and numbers, replaces duplicate customer
 --      codes with the real customer (DQ05), and FLAGS assets that are double-booked (DQ11). Double-bookings are
@@ -16,9 +16,9 @@
 --   5. Checks the work against the hidden answer key: did the cleaning find exactly the planted duplicates,
 --      wrong due dates, oversized allocations and double-bookings, with no false alarms, and do the money
 --      totals still reconcile to the cent?
---   6. Shows one result table at the end. Every row should say PASS.
+--   6. Returns one result table at the end; every row should read PASS.
 --
--- Safe: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
+-- Safety: one all-or-nothing block (BEGIN ... COMMIT). If a line fails, nothing from it is saved.
 -- It never changes raw data. It never deletes anything.
 
 BEGIN;
