@@ -24,6 +24,7 @@ PostgreSQL 18.6 (Windows). Result tables saved as files are in `tests/results/`;
 | 15 | `sql/06_staging/run_stage_15.sql` | 17 checks, including answer-key and reconciliation checks | All PASS | no |
 | 16 | `sql/06_staging/run_stage_16.sql` | 25 checks, including answer-key and money reconciliation checks | All PASS | no |
 | 17 | `sql/07_load/run_stage_17.sql`, `run_stage_17_check_only.sql` | 18 checks | First run: error in the final check statement (`column "actual" does not exist`, a typo in the check query, since fixed). Check-only file: 18 rows, all PASS | no |
+| 18 | `sql/09_mart/run_stage_18.sql` | 24 checks: reconciliation of every fact and dimension to core, no double counting, asset-day rules | All PASS | no |
 
 **Notes on what the checks show.** Several rows test whether random draws land inside the ranges of the assumptions
 register. They show that the generator behaves as designed, not that the data is realistic. The staging and load

@@ -48,7 +48,8 @@ Show how a company-wide analytics system could work for an audio-visual integrat
 | Stage 16: clean rentals and billing into staging; remove duplicate invoices, fix due dates, fix oversized allocations, flag double-bookings; check against the answer key (`sql/06_staging/run_stage_16.sql`, includes its own check) | Run on PostgreSQL 18.6; all 25 checks passed |
 | Stage 17: load the cleaned data into the core tables and reconcile (`sql/07_load/run_stage_17.sql`; check also in `run_stage_17_check_only.sql`) | Run on PostgreSQL 18.6. The first run's final check query had a labelling typo (fixed). The check-only file returned 18 rows, all PASS |
 | NULL audit of the core tables (`sql/08_audit/01_null_audit.sql`, read-only) and `docs/null-meanings.md` | Written, **not yet run** |
-| Stage 18: reporting layer, a star schema in the `mart` schema, with reconciliation checks (`sql/09_mart/run_stage_18.sql`, `docs/star-schema.md`) | Written; not yet executed |
+| Stage 18: reporting layer, a star schema in the `mart` schema, with reconciliation checks (`sql/09_mart/run_stage_18.sql`, `docs/star-schema.md`) | Run on PostgreSQL 18.6; all 24 checks passed |
+| Stage 19: business questions answered as 18 views in the `analysis` schema, with independent checks (`sql/10_analysis/run_stage_19.sql`, `docs/analysis-questions.md`); headline results in `sql/10_analysis/headline_summary.sql` | Written; not yet executed |
 | Test log (`docs/test-log.md`) | Written. Saved result tables are in `tests/results` (data profiles; other stages not yet saved) |
 | Data generator (Stages 6 to 12b) | Done (see the stage rows) |
 | SQL analysis (business questions) and Power BI pages | Not started |
