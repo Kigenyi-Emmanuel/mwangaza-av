@@ -49,10 +49,13 @@ Show how a company-wide analytics system could work for an audio-visual integrat
 | Stage 17: load the cleaned data into the core tables and reconcile (`sql/07_load/run_stage_17.sql`; check also in `run_stage_17_check_only.sql`) | Run on PostgreSQL 18.6. The first run's final check query had a labelling typo (fixed). The check-only file returned 18 rows, all PASS |
 | NULL audit of the core tables (`sql/08_audit/01_null_audit.sql`, read-only) and `docs/null-meanings.md` | Written, **not yet run** |
 | Stage 18: reporting layer, a star schema in the `mart` schema, with reconciliation checks (`sql/09_mart/run_stage_18.sql`, `docs/star-schema.md`) | Run on PostgreSQL 18.6; all 24 checks passed |
-| Stage 19: business questions answered as 18 views in the `analysis` schema, with independent checks (`sql/10_analysis/run_stage_19.sql`, `docs/analysis-questions.md`); headline results in `sql/10_analysis/headline_summary.sql` | Written; not yet executed |
+| Stage 19: business questions answered as 18 views in the `analysis` schema, with independent checks (`sql/10_analysis/run_stage_19.sql`, `docs/analysis-questions.md`); headline results in `sql/10_analysis/headline_summary.sql` | Run on PostgreSQL 18.6; all 20 checks passed |
+| Findings (`docs/findings.md`) and their validation queries (`sql/10_analysis/findings_validation.sql`) | Findings written; validation queries not yet executed |
+| Power BI report: three pages on the analysis views (`docs/powerbi-build-guide.md`) | Built (three pages); screenshots to be added after final formatting |
+| Report and recommendations (`docs/report.md`) | Written; two recommendations and four findings depend on validation queries not yet executed |
 | Test log (`docs/test-log.md`) | Written. Saved result tables are in `tests/results` (data profiles; other stages not yet saved) |
 | Data generator (Stages 6 to 12b) | Done (see the stage rows) |
-| SQL analysis (business questions) and Power BI pages | Not started |
+| SQL analysis: 18 business-question views in the `analysis` schema (`sql/10_analysis`) | Complete (Stage 19, 20 checks passed) |
 
 ## Known limitations
 - Synthetic data reflects our assumptions. It cannot discover facts about a real business.
