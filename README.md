@@ -57,6 +57,26 @@ Show how a company-wide analytics system could work for an audio-visual integrat
 | Data generator (Stages 6 to 12b) | Done (see the stage rows) |
 | SQL analysis: 18 business-question views in the `analysis` schema (`sql/10_analysis`) | Complete (Stage 19, 20 checks passed) |
 
+# Visualization
+
+## Results
+
+* What does the dashboard look like?
+
+The solution delivers a 3-page professional report:
+
+1. **Page 1 (Executive Overview - Business Performance)):** High-level financial and operational KPI cards, project profitability analysis, outstanding invoice ageing, and billing performance trends across the three business divisions: Projects, Products and Rentals.
+![Dashboard](assets/image/Executive_overview.png)
+
+2. **Page 2 (Rental Operations & Asset Performance):** Rental asset utilisation, equipment performance, repair and servicing cost analysis, asset-level performance comparisons, and potential booking conflicts to support operational monitoring.
+![Dashboard](assets/image/Financial_%26_Compliance_risk.png)
+
+3. **Page 3 (Sales & Commercial Performance):** Quotation win-rate analysis, sales performance, customer and division comparisons, quotation decision-time analysis, and product sales insights to support commercial decision-making.
+![Dashboard](assets/image/Inventory_%26_Circulation.png)
+
+[**Click to interact with the Dashboard (Power BI)**](power_bi/Nexus_library_analytics_engine.pbix)
+
+
 ## Known limitations
 - Synthetic data reflects our assumptions. It cannot discover facts about a real business.
 - Gross margin only. Overheads, payroll, depreciation and tax are not modelled.
