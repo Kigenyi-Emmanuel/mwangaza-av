@@ -74,7 +74,7 @@ The solution delivers a 3-page professional report:
 3. **Page 3 (Sales & Commercial Performance):** Quotation win-rate analysis, sales performance, customer and division comparisons, quotation decision-time analysis, and product sales insights to support commercial decision-making.
 ![Dashboard](power_bi/images/commercial%20and%20stock.png)
 
-[**Click to interact with the Dashboard (Power BI)**](power_bi/Nexus_library_analytics_engine.pbix)
+[**Click to interact with the Dashboard (Power BI)**](power_bi/mwangaza_av%20-%20Company%20Wide%20Analytics.pbix)
 
 
 ## Known limitations
