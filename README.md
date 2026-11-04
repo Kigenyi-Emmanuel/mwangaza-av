@@ -69,7 +69,7 @@ The solution delivers a 3-page professional report:
 ![Dashboard](power_bi/images/profitability%20and%20cash.png)
 
 2. **Page 2 (Rental Operations & Asset Performance):** Rental asset utilisation, equipment performance, repair and servicing cost analysis, asset-level performance comparisons, and potential booking conflicts to support operational monitoring.
-![Dashboard](assets/image/Financial_%26_Compliance_risk.png)
+![Dashboard](power_bi/images/rental%20assets.png)
 
 3. **Page 3 (Sales & Commercial Performance):** Quotation win-rate analysis, sales performance, customer and division comparisons, quotation decision-time analysis, and product sales insights to support commercial decision-making.
 ![Dashboard](assets/image/Inventory_%26_Circulation.png)
