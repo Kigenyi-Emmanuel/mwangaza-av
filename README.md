@@ -66,7 +66,7 @@ Show how a company-wide analytics system could work for an audio-visual integrat
 The solution delivers a 3-page professional report:
 
 1. **Page 1 (Executive Overview - Business Performance)):** High-level financial and operational KPI cards, project profitability analysis, outstanding invoice ageing, and billing performance trends across the three business divisions: Projects, Products and Rentals.
-![Dashboard](assets/image/Executive_overview.png)
+![Dashboard](power_bi/images/profitability%20and%20cash.png)
 
 2. **Page 2 (Rental Operations & Asset Performance):** Rental asset utilisation, equipment performance, repair and servicing cost analysis, asset-level performance comparisons, and potential booking conflicts to support operational monitoring.
 ![Dashboard](assets/image/Financial_%26_Compliance_risk.png)
